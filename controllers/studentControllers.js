@@ -1,29 +1,57 @@
-const {createNewStudent}=require('../services/studentServices');
+const { createNewStudent, getAllStudent, updateOldStudent } = require('../services/studentServices');
 
-
-createStudent=async(req, res)=>{
-    console.log(req.file);
-    const student=await createNewStudent(req.body);
-
-    if(student){
-        res.status(200).send("New Student data is created");
+getStudent = async (req, res) => {
+    try {
+        const student = await getAllStudent();
+        if (student) {
+            res.status(200).send(student);
+        }
+        else {
+            res.status(400).send("There no Student data available");
+        }
     }
-    else{
-        res.status(400).send("Bad Request")
+    catch (err) {
+        console.log("StudentControllers - getStudent Error:" + err);
     }
-}
 
-updateStudent=async(req, res)=>{
-    const student=await updateOldStudent(req.params.id,req.body);
-
-    if(student){
-        res.status(200).send("Student data is Updated");
-    }
-    else{
-        res.status(400).send("Bad Request")
-    }
 }
 
 
+createStudent = async (req, res) => {
+    try {
+        console.log(req.file);
+        const student = await createNewStudent(req.body);
 
-module.exports={createStudent};
+        if (student) {
+            res.status(200).send("New Student data is created");
+        }
+        else {
+            res.status(400).send("Bad Request")
+        }
+    }
+    catch (err) {
+        console.log("StudentControllers - createStudent Error" + err);
+    }
+
+}
+
+updateStudent = async (req, res) => {
+    try {
+        const student = await updateOldStudent(req.params.id, req.body);
+
+        if (student) {
+            res.status(200).send("Student data is Updated");
+        }
+        else {
+            res.status(400).send("Bad Request")
+        }
+    }
+    catch (err) {
+        console.log("StudentControllers - updateStudent Error:" + err);
+    }
+
+}
+
+
+
+module.exports = { createStudent, getStudent, updateStudent };
