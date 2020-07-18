@@ -12,9 +12,10 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage });
 
-const { createStudent, updateStudent, getStudent } = require('../controllers/studentControllers')
+const { createStudent, updateStudent, getStudent, getSearch } = require('../controllers/studentControllers')
 
 router.get('/getstudent', getStudent);
+router.get('/getstudentsearch', getSearch)
 router.post('/createstudent', upload.single('studentImage'), createStudent);
 router.put('/updatestudent/:id', updateStudent);
 

@@ -7,13 +7,22 @@ getStudent = async (req, res) => {
             res.status(200).send(student);
         }
         else {
-            res.status(400).send("There no Student data available");
+            res.status(400).send("There are no Student data available");
         }
     }
     catch (err) {
         console.log("StudentControllers - getStudent Error:" + err);
     }
 
+}
+
+getSearch = async (req, res) => {
+    console.log(req.body.name);
+    const student = await getSearchBy(req.body.name);
+    if(student)
+    res.status(200).send(student);
+    else
+    res.status(400).send("No Student found");
 }
 
 
@@ -54,4 +63,4 @@ updateStudent = async (req, res) => {
 
 
 
-module.exports = { createStudent, getStudent, updateStudent };
+module.exports = { createStudent, getStudent, updateStudent, getSearch };
