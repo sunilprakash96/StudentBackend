@@ -17,7 +17,7 @@ const Schema = mongoose.Schema({
     longitude: {
         type: String,
         required: true
-    }
+    },
 });
 
 

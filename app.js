@@ -1,9 +1,13 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
+const bodyParser = require("body-parser")
+var cors = require('cors')
 const student = require('./routes/student');
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use('/api/StudentService', student);
 
 const port = process.env.port || 3000;

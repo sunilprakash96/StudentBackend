@@ -1,10 +1,10 @@
-const { createNewStudent, getAllStudent, updateOldStudent } = require('../services/studentServices');
+const { createNewStudent, getAllStudent, updateOldStudent, getSearchBy,getStudentInfoById } = require('../services/studentServices');
 
 getStudent = async (req, res) => {
     try {
         const student = await getAllStudent();
         if (student) {
-            res.status(200).send(student);
+            res.status(201).send(student);
         }
         else {
             res.status(400).send("There are no Student data available");
@@ -16,9 +16,25 @@ getStudent = async (req, res) => {
 
 }
 
+getStudentById = async (req, res) => {
+    try {
+        const student = await getStudentInfoById(req.params.id);
+        if (student) {
+            res.status(201).send(student);
+        }
+        else {
+            res.status(400).send("There are no Student data available");
+        }
+    }
+    catch (err) {
+        console.log("StudentControllers - getStudentById Error:" + err);
+    }
+
+}
+
 getSearch = async (req, res) => {
     console.log(req.body.name);
-    const student = await getSearchBy(req.body.name);
+    const student = await getSearchBy(req.query.name);
     if(student)
     res.status(200).send(student);
     else
@@ -63,4 +79,4 @@ updateStudent = async (req, res) => {
 
 
 
-module.exports = { createStudent, getStudent, updateStudent, getSearch };
+module.exports = { createStudent, getStudent, updateStudent, getSearch, getStudentById };
