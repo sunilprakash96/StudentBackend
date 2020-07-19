@@ -10,15 +10,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/api/StudentService', student);
 
-const port = process.env.port || 3000;
+const port = process.env.port || 4000;
  
 //Connection for Port...
 app.listen(port, () => {
-    console.log("Connected to Port" + 3000)
+    console.log("Connected to Port" + 4000)
 })
 
 //Connection for MongoDb...
-mongoose.connect('mongodb://localhost:27017/student', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/student', { useUnifiedTopology: true, useNewUrlParser: true, })
     .then(() => {
         console.log("Connected to MongoDb");
     })

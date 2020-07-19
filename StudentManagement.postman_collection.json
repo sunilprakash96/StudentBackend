@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "85df128e-9804-4581-968e-1c431f779bd3",
+		"name": "StudentManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createStudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Greens Gate\",\r\n    \"class\":\"2\",\r\n    \"latitude\": 13.0822542, \r\n    \"longitude\": 80.269191\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/StudentService/createstudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"StudentService",
+						"createstudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateStudent",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"loc\":{\"type\":\"Point\",\"coordinates\":[8.4954858,78.1138502]},\r\n    \"_id\":\"5f1471685370a547f0cc8000\",\r\n    \"name\":\"Sathish Kumar M\",\r\n    \"class\":\"1\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/StudentService/updatestudent/5f1471685370a547f0cc8000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"StudentService",
+						"updatestudent",
+						"5f1471685370a547f0cc8000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/StudentService/getstudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"StudentService",
+						"getstudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudentBySearch",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/StudentService/getstudentsearch?name=man",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"StudentService",
+						"getstudentsearch"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "man"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/StudentService/getstudentbyid/5f1471a75370a547f0cc8001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"StudentService",
+						"getstudentbyid",
+						"5f1471a75370a547f0cc8001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudentByLocation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/StudentService/getstudentnearme?latitude=8.4954858&longitude=78.1138502&distance=1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"StudentService",
+						"getstudentnearme"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "8.4954858"
+						},
+						{
+							"key": "longitude",
+							"value": "78.1138502"
+						},
+						{
+							"key": "distance",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
