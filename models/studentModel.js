@@ -10,16 +10,16 @@ const Schema = mongoose.Schema({
         type: String,
         required: true
     },
-    latitude: {
-        type: String,
-        required: true
-    },
-    longitude: {
-        type: String,
-        required: true
-    },
+    loc: {
+        type:{
+            type: String,
+            required: true
+        },
+        coordinates: []
+    }
 });
 
+Schema.index({ 'loc': "2dsphere" });
 
 const Student = mongoose.model('Student', Schema);
 
